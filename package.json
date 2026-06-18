@@ -1,7 +1,7 @@
 {
   "name": "financeos",
-  "version": "1.3.0",
-  "description": "Personal Financial Command Center by Amirehsan Noori. Offline-first PWA for accounts, transactions, assets, liabilities, goals, budgeting and financial health score.",
+  "version": "1.4.0",
+  "description": "Persian Personal Finance Operating System with professional RTL UI, Jalali dates, goals, budgeting and financial health score.",
   "main": "index.html",
   "scripts": {
     "start": "npx serve ."
@@ -9,13 +9,11 @@
   "keywords": [
     "financeos",
     "personal-finance",
-    "budgeting",
-    "pwa",
     "persian",
     "rtl",
-    "offline",
-    "net-worth",
-    "goals",
+    "jalali",
+    "pwa",
+    "budgeting",
     "financial-health"
   ],
   "author": "Amirehsan Noori",

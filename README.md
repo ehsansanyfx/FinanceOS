@@ -1,96 +1,63 @@
 # FinanceOS
 
-**Personal Finance Operating System**  
-by **Amirehsan Noori**
+**سیستم عامل مدیریت مالی شخصی**  
+ساخته شده توسط **Amirehsan Noori**
 
-FinanceOS is an offline-first, Persian-first personal financial command center designed for real household financial management in inflationary economies.
+FinanceOS یک وب‌اپلیکیشن آفلاین و فارسی‌محور برای مدیریت درآمد، هزینه، اقساط، دارایی‌ها، بدهی‌ها، اهداف مالی، صندوق اضطراری، دارایی خالص و سلامت مالی است.
 
-It is not just an expense tracker.  
-It connects income, accounts, transactions, assets, liabilities, goals, budgeting, debt analysis, emergency fund planning, financial health scoring, and net worth into one structured financial system.
+## نسخه
 
-## Version
+**V1.4.0 — رابط کاربری فارسی و حرفه‌ای**
 
-**V1.3.0 — Personal Financial Command Center**
+## تغییرات نسخه V1.4
 
-## Core Concept
+- فارسی‌سازی کامل رابط کاربری
+- تبدیل تاریخ‌های نمایشی به شمسی
+- افزودن منوی حرفه‌ای و دسته‌بندی‌شده
+- طراحی مینیمال‌تر و شبیه اپلیکیشن واقعی
+- استفاده از فونت Vazirmatn
+- بهبود تجربه کاربری موبایل
+- بهبود دسترسی به ماژول‌ها
 
-FinanceOS follows this flow:
+## ساختار منو
 
-```text
-Income → Accounts → Transactions → Assets → Liabilities → Goals → Financial Score → Analysis
-```
+- داشبورد
+- حساب‌ها
+- تراکنش‌ها
+- دارایی‌ها
+- بدهی‌ها و اقساط
+- اهداف مالی
+- گزارش‌ها
+- تنظیمات و بکاپ
 
-## Features in V1.3
+## امکانات
 
-- PWA and offline-first architecture
-- Persian RTL responsive interface
-- Monthly financial periods
-- Base household income setup
-- Account management
-- Transaction engine
-  - Income
-  - Expense
-  - Transfer
-  - Investment
-  - Loan Payment
-  - Goal Contribution
-- Asset management
-- Liability / loan management
-- Net Worth calculation
-- Debt-to-income ratio
-- Budget allocation engine
-- Goals Engine
-- Emergency Fund Tracker
-- Germany Migration Fund template
-- Lumentra Fund template
-- Financial Health Score
-- Smart Advisor 2.0
-- Category expense analysis
-- Offline chart with Canvas
-- JSON backup and restore
-- GitHub Pages ready
+- مدیریت درآمد خانوار
+- مدیریت حساب‌ها
+- ثبت تراکنش‌ها
+- مدیریت دارایی‌ها
+- مدیریت بدهی‌ها و اقساط
+- هدف‌گذاری مالی
+- صندوق اضطراری
+- محاسبه دارایی خالص
+- امتیاز سلامت مالی
+- گزارش دسته‌ای هزینه‌ها
+- نمودار آفلاین
+- بکاپ و بازیابی JSON
+- PWA و قابل نصب روی موبایل
+- آماده GitHub Pages
 
-## Default Demo Data
-
-- Main income: 75,000,000 IRR
-- Spouse income: 20,000,000 IRR
-- Monthly installments: 37,000,000 IRR
-- Default goals:
-  - Emergency Fund
-  - Germany Migration
-  - Lumentra Fund
-
-## Tech Stack
+## تکنولوژی‌ها
 
 - HTML5
 - CSS3
-- Vanilla JavaScript
-- Canvas API
+- JavaScript
 - LocalStorage
+- Canvas API
 - Service Worker
 - Web App Manifest
 - GitHub Pages
 
-## Resume Description
+## رزومه
 
-Designed and developed **FinanceOS**, an offline-first Personal Financial Command Center featuring account management, transaction processing, budgeting, asset tracking, liability management, goals engine, emergency fund tracking, financial health scoring, debt-risk analysis, net-worth calculation, financial analytics, PWA architecture, and mobile-first RTL design using HTML, CSS, JavaScript, Canvas API, LocalStorage, Service Workers, and GitHub Pages.
-
-## Roadmap
-
-### V1.4
-- Jalali calendar
-- Monthly comparison reports
-- CSV and Excel export
-- Better chart system
-- Debt payoff simulator
-
-### V2.0
-- IndexedDB
-- Multi-profile support
-- Cloud sync
-- VPS deployment
-- Commercial product version
-
-## License
-
-MIT License
+Designed and developed FinanceOS, an offline-first Persian Personal Finance Operating System featuring budgeting, debt management, account management, transactions, assets, liabilities, goals, emergency fund tracking, net-worth calculation, financial health scoring, RTL user experience, and PWA architecture using HTML, CSS, JavaScript, LocalStorage, Service Workers, and GitHub Pages.
