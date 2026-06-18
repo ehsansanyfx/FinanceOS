@@ -1,7 +1,7 @@
 {
   "name": "financeos",
-  "version": "1.5.0",
-  "description": "Persian Personal Finance Operating System",
+  "version": "1.6.0",
+  "description": "FinanceOS Clean Core",
   "main": "index.html",
   "author": "Amirehsan Noori",
   "license": "MIT"

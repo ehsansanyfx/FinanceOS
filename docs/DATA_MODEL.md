@@ -1,3 +1,3 @@
-# FinanceOS Data Model
+# FinanceOS V1.6 Data Model
 
-Periods are based on Jalali year-month keys.
+Single source of truth per period: income, accounts, transactions, loans, assets, goals.

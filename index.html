@@ -7,14 +7,14 @@
   <meta name="description" content="FinanceOS — سیستم عامل مدیریت مالی شخصی" />
   <title>FinanceOS | سیستم مالی شخصی</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=1.5" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.6" />
 </head>
 <body>
-  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div id="overlay" class="overlay"></div>
 
-  <aside class="sidebar" id="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="brand">
-      <div class="brand-mark">F</div>
+      <div class="brand-logo">F</div>
       <div>
         <h1>FinanceOS</h1>
         <p>سیستم مالی شخصی</p>
@@ -23,220 +23,229 @@
 
     <nav class="nav">
       <button class="nav-item active" data-page="dashboard">داشبورد</button>
-      <button class="nav-item" data-page="smartbudget">بودجه هوشمند</button>
-      <button class="nav-item" data-page="health">سلامت مالی</button>
       <button class="nav-item" data-page="accounts">حساب‌ها</button>
       <button class="nav-item" data-page="transactions">تراکنش‌ها</button>
+      <button class="nav-item" data-page="loans">اقساط و بدهی‌ها</button>
       <button class="nav-item" data-page="assets">دارایی‌ها</button>
-      <button class="nav-item" data-page="liabilities">بدهی‌ها و اقساط</button>
       <button class="nav-item" data-page="goals">اهداف مالی</button>
       <button class="nav-item" data-page="reports">گزارش‌ها</button>
-      <button class="nav-item" data-page="settings">تنظیمات و بکاپ</button>
+      <button class="nav-item" data-page="settings">تنظیمات</button>
     </nav>
 
-    <div class="sidebar-footer">
-      <span>نسخه ۱.۵</span>
-      <strong>Amirehsan Noori</strong>
+    <div class="sidebar-note">
+      <span>Clean Core</span>
+      <strong>V1.6</strong>
     </div>
   </aside>
 
   <div class="app">
-    <header class="app-header">
-      <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو">☰</button>
-      <div class="header-title">
+    <header class="topbar">
+      <button id="menuBtn" class="menu-btn">☰</button>
+      <div>
         <h2 id="pageTitle">داشبورد</h2>
-        <p id="todayText">امروز</p>
+        <p id="todayLabel">امروز</p>
       </div>
-      <div class="period-box">
+      <div class="period-control">
         <label>دوره مالی</label>
-        <select id="jalaliMonth"></select>
-        <select id="jalaliYear"></select>
-        <small id="periodJalali">-</small>
+        <div class="period-row">
+          <select id="periodYear"></select>
+          <select id="periodMonth"></select>
+        </div>
+        <small id="periodLabel">-</small>
       </div>
     </header>
 
     <main class="content">
-      <section class="page active" id="page-dashboard">
+      <section id="page-dashboard" class="page active">
         <div class="grid">
-          <section class="card kpi-card"><span>درآمد ماه</span><strong id="kpiIncome">0</strong><small>تومان</small></section>
-          <section class="card kpi-card"><span>هزینه ماه</span><strong id="kpiExpense">0</strong><small>تومان</small></section>
-          <section class="card kpi-card"><span>دارایی خالص</span><strong id="kpiNetWorth">0</strong><small>دارایی‌ها منهای بدهی‌ها</small></section>
-          <section class="card kpi-card"><span>نسبت اقساط</span><strong id="kpiDebtRatio">0٪</strong><small id="kpiDebtAmount">اقساط</small></section>
-          <section class="card kpi-card"><span>سلامت مالی</span><strong id="kpiHealthScore">0/100</strong><small id="kpiHealthStatus">وضعیت</small></section>
-          <section class="card kpi-card"><span>نرخ پس‌انداز</span><strong id="kpiSavingRate">0٪</strong><small>اهداف + سرمایه‌گذاری</small></section>
+          <div class="card kpi"><span>درآمد ماه</span><strong id="kpiIncome">۰</strong><small>تومان</small></div>
+          <div class="card kpi"><span>هزینه ماه</span><strong id="kpiExpense">۰</strong><small>تومان</small></div>
+          <div class="card kpi"><span>اقساط ماه</span><strong id="kpiLoans">۰</strong><small>بر اساس بدهی‌ها</small></div>
+          <div class="card kpi"><span>دارایی خالص</span><strong id="kpiNetWorth">۰</strong><small>دارایی‌ها - بدهی‌ها</small></div>
+          <div class="card kpi"><span>سلامت مالی</span><strong id="kpiScore">۰/۱۰۰</strong><small id="scoreStatus">-</small></div>
+          <div class="card kpi"><span>مانده نقدی</span><strong id="kpiCash">۰</strong><small>موجودی حساب‌ها</small></div>
 
-          <section class="card col-7"><h3>پیشنهاد بودجه این ماه</h3><div id="allocation"></div></section>
-          <section class="card col-5"><h3>نمای مالی سریع</h3><div class="note" id="snapshot"></div></section>
-          <section class="card col-7"><h3>مشاور هوشمند مالی</h3><div id="advice"></div></section>
-          <section class="card col-5"><h3>صندوق اضطراری</h3><div id="emergencyTracker"></div></section>
+          <div class="card col-7">
+            <h3>بودجه پیشنهادی</h3>
+            <div id="budgetPlan"></div>
+          </div>
+
+          <div class="card col-5">
+            <h3>خلاصه مالی</h3>
+            <div id="snapshot" class="note"></div>
+          </div>
+
+          <div class="card col-7">
+            <h3>مشاور هوشمند</h3>
+            <div id="advisor"></div>
+          </div>
+
+          <div class="card col-5">
+            <h3>صندوق اضطراری</h3>
+            <div id="emergencyBox"></div>
+          </div>
         </div>
       </section>
 
-      <section class="page" id="page-smartbudget">
+      <section id="page-accounts" class="page">
         <div class="grid">
-          <section class="card col-12">
-            <h3>برنامه‌ریز بودجه هوشمند</h3>
-            <p class="note">با توجه به درآمد، اقساط و شرایط فعلی، سیستم پیشنهاد می‌دهد هر ماه چقدر به هر بخش اختصاص بدهی.</p>
-            <div id="smartBudgetPlan"></div>
-          </section>
-          <section class="card col-6">
-            <h3>بودجه پیشنهادی حساب‌ها</h3>
-            <div id="accountFundingPlan"></div>
-          </section>
-          <section class="card col-6">
-            <h3>اقدام‌های پیشنهادی این ماه</h3>
-            <div id="actionPlan"></div>
-          </section>
-        </div>
-      </section>
-
-      <section class="page" id="page-health">
-        <div class="grid">
-          <section class="card col-5">
-            <h3>مرکز سلامت مالی</h3>
-            <div id="healthBreakdown"></div>
-          </section>
-          <section class="card col-7">
-            <h3>تحلیل سلامت مالی</h3>
-            <div id="healthAdvice"></div>
-          </section>
-        </div>
-      </section>
-
-      <section class="page" id="page-accounts">
-        <div class="grid">
-          <section class="card col-12">
-            <h3>مدیریت حساب‌ها</h3>
-            <p class="note">حساب‌های بانکی، نقدی، سرمایه‌گذاری، صندوق اضطراری یا صندوق کسب‌وکار را ثبت کن.</p>
+          <div class="card col-12">
+            <h3>حساب‌ها</h3>
+            <p class="note">موجودی حساب‌ها فقط از موجودی اولیه + تراکنش‌ها محاسبه می‌شود.</p>
             <div class="form-grid">
-              <label>نام حساب<input id="accountName" placeholder="مثلاً بانک ملت، صندوق اضطراری، سرمایه‌گذاری" /></label>
+              <label>نام حساب<input id="accountName" placeholder="مثلاً بانک ملت، نقدی، صندوق اضطراری"></label>
               <label>نوع حساب<select id="accountType">
-                <option value="Bank">بانکی</option><option value="Cash">نقدی</option><option value="Savings">پس‌انداز</option>
-                <option value="Investment">سرمایه‌گذاری</option><option value="Emergency Fund">صندوق اضطراری</option><option value="Business Fund">صندوق کسب‌وکار</option>
+                <option value="bank">بانکی</option>
+                <option value="cash">نقدی</option>
+                <option value="savings">پس‌انداز</option>
+                <option value="investment">سرمایه‌گذاری</option>
+                <option value="emergency">صندوق اضطراری</option>
+                <option value="business">کسب‌وکار</option>
               </select></label>
-              <label>موجودی اولیه<input id="accountBalance" type="number" inputmode="numeric" placeholder="تومان" /></label>
-              <label>واحد<select id="accountCurrency"><option value="IRR">تومان</option><option value="USD">دلار</option><option value="Gold">طلا</option></select></label>
+              <label>موجودی اولیه<input id="accountOpening" type="number" inputmode="numeric" placeholder="تومان"></label>
             </div>
             <button id="addAccountBtn">افزودن حساب</button>
-            <div class="table-wrap"><table><thead><tr><th>حساب</th><th>نوع</th><th>موجودی</th><th>عملیات</th></tr></thead><tbody id="accountList"></tbody></table></div>
-          </section>
+            <div id="accountsCards" class="cards-list"></div>
+          </div>
         </div>
       </section>
 
-      <section class="page" id="page-transactions">
+      <section id="page-transactions" class="page">
         <div class="grid">
-          <section class="card col-12">
-            <h3>ثبت تراکنش</h3>
+          <div class="card col-12">
+            <h3>تراکنش‌ها</h3>
+            <p class="note">هر درآمد، هزینه، انتقال، سرمایه‌گذاری یا پرداخت قسط اینجا ثبت می‌شود و حساب‌ها را خودکار به‌روزرسانی می‌کند.</p>
             <div class="form-grid">
               <label>نوع تراکنش<select id="txType">
-                <option value="Income">درآمد</option><option value="Expense">هزینه</option><option value="Transfer">انتقال بین حساب‌ها</option>
-                <option value="Investment">سرمایه‌گذاری</option><option value="Loan Payment">پرداخت قسط</option><option value="Goal Contribution">واریز به هدف مالی</option>
+                <option value="income">درآمد</option>
+                <option value="expense">هزینه</option>
+                <option value="transfer">انتقال بین حساب‌ها</option>
+                <option value="investment">سرمایه‌گذاری</option>
+                <option value="loanPayment">پرداخت قسط</option>
+                <option value="goalContribution">واریز به هدف</option>
               </select></label>
-              <label>حساب مبدا<select id="txFrom"></select></label>
-              <label>حساب مقصد<select id="txTo"></select></label>
-              <label>مبلغ<input id="txAmount" type="number" inputmode="numeric" placeholder="تومان" /></label>
+              <label>از حساب<select id="txFrom"></select></label>
+              <label>به حساب<select id="txTo"></select></label>
+              <label>مبلغ<input id="txAmount" type="number" inputmode="numeric" placeholder="تومان"></label>
               <label>دسته<select id="txCategory"></select></label>
-              <label>تاریخ شمسی<input id="txJalaliDate" placeholder="مثلاً ۱۴۰۵/۰۳/۲۹" /></label>
-              <label>توضیح<input id="txNote" placeholder="اختیاری" /></label>
+              <label>تاریخ شمسی<input id="txDate" placeholder="۱۴۰۵/۰۳/۲۹"></label>
+              <label class="wide">توضیح<input id="txNote" placeholder="اختیاری"></label>
             </div>
             <button id="addTxBtn">ثبت تراکنش</button>
-            <div class="table-wrap"><table><thead><tr><th>نوع</th><th>دسته</th><th>مبلغ</th><th>تاریخ</th><th>توضیح</th><th>عملیات</th></tr></thead><tbody id="txList"></tbody></table></div>
-          </section>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>نوع</th><th>مبلغ</th><th>دسته</th><th>از</th><th>به</th><th>تاریخ</th><th>توضیح</th><th></th></tr></thead>
+                <tbody id="txTable"></tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="page" id="page-assets">
+      <section id="page-loans" class="page">
         <div class="grid">
-          <section class="card col-12">
-            <h3>مدیریت دارایی‌ها</h3>
+          <div class="card col-12">
+            <h3>اقساط و بدهی‌ها</h3>
+            <p class="note">اقساط ماهانه فقط از همین لیست محاسبه می‌شود. هیچ قسط پیش‌فرض مخفی وجود ندارد.</p>
             <div class="form-grid">
-              <label>عنوان دارایی<input id="assetName" placeholder="طلا، دلار، خودرو، سپرده، سرمایه کسب‌وکار" /></label>
-              <label>نوع دارایی<select id="assetType"><option value="Gold">طلا</option><option value="Currency">ارز</option><option value="Vehicle">خودرو</option><option value="Deposit">سپرده</option><option value="Business">کسب‌وکار</option><option value="Other">سایر</option></select></label>
-              <label>ارزش فعلی<input id="assetValue" type="number" inputmode="numeric" placeholder="تومان" /></label>
-              <label>توضیح<input id="assetNote" placeholder="اختیاری" /></label>
+              <label>عنوان بدهی<input id="loanName" placeholder="مثلاً وام رفاه"></label>
+              <label>مانده بدهی<input id="loanBalance" type="number" inputmode="numeric" placeholder="تومان"></label>
+              <label>قسط ماهانه<input id="loanPayment" type="number" inputmode="numeric" placeholder="تومان"></label>
+              <label>تعداد اقساط باقی‌مانده<input id="loanMonths" type="number" inputmode="numeric" placeholder="مثلاً ۱۲"></label>
+            </div>
+            <button id="addLoanBtn">افزودن قسط / بدهی</button>
+            <div id="loansCards" class="cards-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-assets" class="page">
+        <div class="grid">
+          <div class="card col-12">
+            <h3>دارایی‌ها</h3>
+            <div class="form-grid">
+              <label>عنوان دارایی<input id="assetName" placeholder="طلا، دلار، خودرو، سپرده"></label>
+              <label>نوع دارایی<select id="assetType">
+                <option value="gold">طلا</option>
+                <option value="currency">ارز</option>
+                <option value="vehicle">خودرو</option>
+                <option value="deposit">سپرده</option>
+                <option value="business">کسب‌وکار</option>
+                <option value="other">سایر</option>
+              </select></label>
+              <label>ارزش فعلی<input id="assetValue" type="number" inputmode="numeric" placeholder="تومان"></label>
             </div>
             <button id="addAssetBtn">افزودن دارایی</button>
-            <div class="table-wrap"><table><thead><tr><th>دارایی</th><th>نوع</th><th>ارزش</th><th>عملیات</th></tr></thead><tbody id="assetList"></tbody></table></div>
-          </section>
+            <div id="assetsCards" class="cards-list"></div>
+          </div>
         </div>
       </section>
 
-      <section class="page" id="page-liabilities">
+      <section id="page-goals" class="page">
         <div class="grid">
-          <section class="card col-12">
-            <h3>بدهی‌ها و اقساط</h3>
-            <div class="form-grid">
-              <label>عنوان بدهی<input id="liabilityName" placeholder="وام بانک رفاه، قسط خودرو، بدهی شخصی" /></label>
-              <label>مانده بدهی<input id="liabilityBalance" type="number" inputmode="numeric" placeholder="تومان" /></label>
-              <label>قسط ماهانه<input id="liabilityPayment" type="number" inputmode="numeric" placeholder="تومان" /></label>
-              <label>تعداد اقساط باقی‌مانده<input id="liabilityMonths" type="number" inputmode="numeric" placeholder="مثلاً ۱۲" /></label>
-            </div>
-            <button id="addLiabilityBtn">افزودن بدهی</button>
-            <div class="table-wrap"><table><thead><tr><th>بدهی</th><th>مانده</th><th>قسط ماهانه</th><th>اقساط باقی‌مانده</th><th>عملیات</th></tr></thead><tbody id="liabilityList"></tbody></table></div>
-          </section>
-        </div>
-      </section>
-
-      <section class="page" id="page-goals">
-        <div class="grid">
-          <section class="card col-12">
+          <div class="card col-12">
             <h3>اهداف مالی</h3>
-            <p class="note">هدف‌هایی مثل مهاجرت آلمان، صندوق اضطراری، سرمایه Lumentra یا خرید خودرو را مدیریت کن.</p>
-            <div class="form-grid goal-grid">
-              <label>نام هدف<input id="goalName" placeholder="مثلاً مهاجرت آلمان یا صندوق اضطراری" /></label>
-              <label>دسته هدف<select id="goalCategory"><option value="Emergency Fund">صندوق اضطراری</option><option value="Germany Migration">مهاجرت آلمان</option><option value="Lumentra Fund">سرمایه Lumentra</option><option value="Vehicle">خودرو</option><option value="Investment">سرمایه‌گذاری</option><option value="House">مسکن</option><option value="Custom">سفارشی</option></select></label>
-              <label>مبلغ هدف<input id="goalTarget" type="number" inputmode="numeric" placeholder="تومان" /></label>
-              <label>مبلغ فعلی<input id="goalCurrent" type="number" inputmode="numeric" placeholder="تومان" /></label>
-              <label>پس‌انداز ماهانه<input id="goalMonthly" type="number" inputmode="numeric" placeholder="تومان" /></label>
-              <label>اولویت<select id="goalPriority"><option value="High">بالا</option><option value="Medium">متوسط</option><option value="Low">پایین</option></select></label>
+            <div class="form-grid">
+              <label>نام هدف<input id="goalName" placeholder="مثلاً مهاجرت آلمان"></label>
+              <label>دسته<select id="goalType">
+                <option value="emergency">صندوق اضطراری</option>
+                <option value="migration">مهاجرت آلمان</option>
+                <option value="business">سرمایه کسب‌وکار</option>
+                <option value="investment">سرمایه‌گذاری</option>
+                <option value="vehicle">خودرو</option>
+                <option value="custom">سفارشی</option>
+              </select></label>
+              <label>مبلغ هدف<input id="goalTarget" type="number" inputmode="numeric" placeholder="تومان"></label>
+              <label>موجودی فعلی<input id="goalCurrent" type="number" inputmode="numeric" placeholder="تومان"></label>
+              <label>واریز ماهانه<input id="goalMonthly" type="number" inputmode="numeric" placeholder="تومان"></label>
             </div>
             <button id="addGoalBtn">افزودن هدف</button>
-            <div id="goalCards" class="goal-cards"></div>
-          </section>
+            <div id="goalsCards" class="cards-list goals-grid"></div>
+          </div>
         </div>
       </section>
 
-      <section class="page" id="page-reports">
+      <section id="page-reports" class="page">
         <div class="grid">
-          <section class="card col-6"><h3>گزارش دسته‌ای هزینه‌ها</h3><div id="categoryReport"></div></section>
-          <section class="card col-6"><h3>نمودار هزینه‌ها</h3><canvas id="expenseChart" width="600" height="300"></canvas></section>
-          <section class="card col-6"><h3>نمودار جریان نقدی</h3><canvas id="cashflowChart" width="600" height="300"></canvas></section>
-          <section class="card col-6"><h3>نمودار اهداف مالی</h3><canvas id="goalsChart" width="600" height="300"></canvas></section>
+          <div class="card col-6"><h3>گزارش هزینه‌ها</h3><div id="categoryReport"></div></div>
+          <div class="card col-6"><h3>جریان نقدی</h3><div id="cashflowReport"></div></div>
+          <div class="card col-12"><h3>گزارش سلامت مالی</h3><div id="healthReport"></div></div>
         </div>
       </section>
 
-      <section class="page" id="page-settings">
+      <section id="page-settings" class="page">
         <div class="grid">
-          <section class="card col-4">
+          <div class="card col-4">
             <h3>درآمد پایه ماهانه</h3>
             <div class="form-grid one">
-              <label>درآمد من<input id="myIncome" type="number" inputmode="numeric" /></label>
-              <label>درآمد همسر<input id="spouseIncome" type="number" inputmode="numeric" /></label>
+              <label>درآمد من<input id="myIncome" type="number" inputmode="numeric"></label>
+              <label>درآمد همسر<input id="spouseIncome" type="number" inputmode="numeric"></label>
             </div>
-            <button id="saveIncomeBtn">ذخیره درآمد پایه</button>
-            <button class="secondary" id="themeBtn">تغییر تم روشن/تاریک</button>
-          </section>
-          <section class="card col-8">
-            <h3>بکاپ، خروجی و گزارش</h3>
-            <p class="note">برای Excel از خروجی CSV استفاده کن. برای PDF، دکمه چاپ گزارش را بزن و Save as PDF را انتخاب کن.</p>
+            <button id="saveIncomeBtn">ذخیره درآمد</button>
+          </div>
+
+          <div class="card col-8">
+            <h3>داده‌ها و بکاپ</h3>
+            <p class="note">برای رفع قاطی‌شدن نسخه‌های قبلی، یک بار «ریست تمیز» بزن و داده‌ها را از اول وارد کن.</p>
             <div class="button-row">
-              <button class="secondary" id="exportBtn">خروجی JSON</button>
-              <button class="secondary" id="importBtn">ورود اطلاعات</button>
-              <button class="secondary" id="csvBtn">خروجی CSV</button>
-              <button class="secondary" id="printBtn">چاپ / PDF</button>
-              <button class="danger" id="resetBtn">بازنشانی کامل</button>
+              <button id="exportBtn" class="secondary">خروجی JSON</button>
+              <button id="importBtn" class="secondary">ورود JSON</button>
+              <button id="csvBtn" class="secondary">خروجی CSV</button>
+              <button id="printBtn" class="secondary">چاپ / PDF</button>
+              <button id="themeBtn" class="secondary">تم روشن/تاریک</button>
+              <button id="hardResetBtn" class="danger">ریست تمیز</button>
             </div>
             <textarea id="dataBox" placeholder="خروجی یا ورودی JSON"></textarea>
-          </section>
+          </div>
         </div>
       </section>
     </main>
   </div>
 
-  <script src="assets/js/app.js?v=1.5"></script>
+  <script src="assets/js/app.js?v=1.6"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=1.5'));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=1.6'));
     }
   </script>
 </body>

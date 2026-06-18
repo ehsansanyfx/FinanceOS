@@ -1,7 +1,7 @@
 {
   "name": "FinanceOS",
   "short_name": "FinanceOS",
-  "description": "سیستم عامل مدیریت مالی شخصی؛ بودجه‌بندی، اقساط، دارایی‌ها، اهداف مالی و سلامت مالی.",
+  "description": "سیستم عامل مدیریت مالی شخصی",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f1115",
