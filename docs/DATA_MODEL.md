@@ -1,3 +1,3 @@
 # FinanceOS Data Model
 
-ساختار داده بر اساس دوره مالی، حساب‌ها، تراکنش‌ها، دارایی‌ها، بدهی‌ها و اهداف مالی است.
+Periods are based on Jalali year-month keys.

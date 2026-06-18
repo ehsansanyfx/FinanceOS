@@ -1,3 +1,3 @@
 # FinanceOS Product Plan
 
-نسخه V1.4 روی فارسی‌سازی، تاریخ شمسی، منوی حرفه‌ای و تجربه کاربری مینیمال تمرکز دارد.
+V1.5 Financial Intelligence Update

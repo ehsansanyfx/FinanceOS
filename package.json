@@ -1,21 +1,8 @@
 {
   "name": "financeos",
-  "version": "1.4.0",
-  "description": "Persian Personal Finance Operating System with professional RTL UI, Jalali dates, goals, budgeting and financial health score.",
+  "version": "1.5.0",
+  "description": "Persian Personal Finance Operating System",
   "main": "index.html",
-  "scripts": {
-    "start": "npx serve ."
-  },
-  "keywords": [
-    "financeos",
-    "personal-finance",
-    "persian",
-    "rtl",
-    "jalali",
-    "pwa",
-    "budgeting",
-    "financial-health"
-  ],
   "author": "Amirehsan Noori",
   "license": "MIT"
 }
